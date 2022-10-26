@@ -5,7 +5,7 @@ import Footer from './Footer';
 function Layout({ children }) {
   return (
     <>
-      <ThemeProvider>
+      <ThemeProvider themes={['light', 'dark', 'blackout']}>
         <Header />
         {children}
         <Footer />

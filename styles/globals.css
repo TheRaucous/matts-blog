@@ -1,48 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer base {
-  :root {
-    --themeclr: 200 0 0;
-
-    --header-height: 54px;
-  }
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import 'theme.css';
 
 a {
   color: inherit;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+:root {
+  --header-height: 54px;
 }
 
-/* :root body.dark {
-  --brdrclr: 0 255 0;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-:root body.light {
-  --brdrclr: 0 0 255;
-} */
-
-[data-theme='dark'] {
-  --brdrclr: 0 0 255;
+* {
+  color: rgb(var(--c-text-00));
+  border-color: rgb(var(--c-brdr));
 }
 
-[data-theme='light'] {
-  --brdrclr: 0 255 0;
+.c-trans {
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }

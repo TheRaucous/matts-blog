@@ -1,0 +1,35 @@
+[data-theme='light'] {
+    --c-theme: 0 0 200;
+  
+    --c-bg-00: 255 255 255;
+  
+    --c-text-00: 0 0 0;
+  
+    --c-brdr: 220 220 220;
+  
+    --header-opacity: 0.9;
+  }
+  
+  [data-theme='dark'] {
+    --c-theme: 200 0 0;
+  
+    --c-bg-00: 30 30 30;
+  
+    --c-text-00: 255 255 255;
+  
+    --c-brdr: 60 60 60;
+  
+    --header-opacity: 0.9;
+  }
+  
+  [data-theme='blackout'] {
+    --c-theme: 200 0 0;
+  
+    --c-bg-00: 0 0 0;
+  
+    --c-text-00: 255 255 255;
+  
+    --c-brdr: 40 40 40;
+  
+    --header-opacity: 0.9;
+  }

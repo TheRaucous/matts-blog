@@ -1,7 +1,9 @@
+import ThemeSwitcher from "./ThemeSwitcher";
+
 function Footer() {
   return (
     <footer>
-      <h1 className="text-center">Footer</h1>
+      <ThemeSwitcher />
     </footer>
   );
 }
