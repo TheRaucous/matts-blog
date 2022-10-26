@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="flex justify-between sticky px-[10%] w-full h-[var(--header-height)] top-0 border-b border-brdrclr">
       <Link href="/">
-        <a className='flex items-center h-full'>
+        <a className="flex items-center h-full">
           <span className="text-3xl select-none leading-none">MatMac</span>
         </a>
       </Link>
