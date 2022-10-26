@@ -4,8 +4,7 @@
 
 @layer base {
   :root {
-    --brdrclr: 50 50 50;
-    --themeclr: 170 0 0;
+    --themeclr: 200 0 0;
 
     --header-height: 54px;
   }
@@ -22,10 +21,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -34,4 +29,20 @@ a {
     color: white;
     background: black;
   }
+}
+
+/* :root body.dark {
+  --brdrclr: 0 255 0;
+}
+
+:root body.light {
+  --brdrclr: 0 0 255;
+} */
+
+[data-theme='dark'] {
+  --brdrclr: 0 0 255;
+}
+
+[data-theme='light'] {
+  --brdrclr: 0 255 0;
 }

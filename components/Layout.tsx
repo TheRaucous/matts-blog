@@ -1,12 +1,15 @@
+import { ThemeProvider } from 'next-themes';
 import Header from './Header';
 import Footer from './Footer';
 
 function Layout({ children }) {
   return (
     <>
-      <Header/>
-      {children}
-      <Footer />
+      <ThemeProvider>
+        <Header />
+        {children}
+        <Footer />
+      </ThemeProvider>
     </>
   );
 }
