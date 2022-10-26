@@ -14,6 +14,7 @@ function ThemeSwitcher() {
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setMounted(true);
+    document.body.classList.add('c-trans');
   }, []);
 
   let Icon;
