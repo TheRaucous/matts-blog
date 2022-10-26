@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* [data-theme="light"] {
-    
-  } */
-
   :root {
     --brdrclr: 50 50 50;
     --themeclr: 170 0 0;
