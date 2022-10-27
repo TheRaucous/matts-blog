@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { IconType } from 'react-icons';
 import {
   MdOutlineDarkMode,
   MdOutlineLightMode,
@@ -17,7 +18,7 @@ function ThemeSwitcher() {
     document.body.classList.add('c-trans');
   }, []);
 
-  let Icon;
+  let Icon: IconType;
 
   switch (resolvedTheme) {
     case 'light':

@@ -13,11 +13,16 @@ module.exports = {
         'c-theme': {
           DEFAULT: 'rgb(var(--c-theme) / <alpha-value>)',
         },
+        'c-text': {
+          DEFAULT: 'rgb(var(--c-text-01) / <alpha-value>)',
+          '00': 'rgb(var(--c-text-00) / <alpha-value>)',
+          '01': 'rgb(var(--c-text-01) / <alpha-value>)'
+        },
         'c-brdr': {
           DEFAULT: 'rgb(var(--c-brdr) / <alpha-value>)',
         },
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 };
