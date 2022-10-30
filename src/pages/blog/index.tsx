@@ -20,7 +20,7 @@ function index({ slugs }) {
 }
 
 export const getStaticProps = async () => {
-  const files = fs.readdirSync('_content/blogPosts');
+  const files = fs.readdirSync('src/_content/blogPosts');
   return {
     props: {
       slugs: files.map((filename) => filename.replace('.mdx', '')),

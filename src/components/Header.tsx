@@ -24,12 +24,12 @@ function HeaderLink(props: { children: any; href: string }) {
   return (
     <Link href={props.href}>
       <a
-        className={`block h-full px-3 text-xl c-trans border-b box-content ${
+        className={`block h-full px-3 text-lg c-trans border-b box-content ${
           isOnPage ? 'border-c-theme select-none' : ''
         }`}
       >
         <span
-          className={`leading-[calc(var(--header-height)-1px)] hover:text-c-theme transition-colors duration-100 ${
+          className={`leading-[calc(var(--header-height)-1px)] font-semibold hover:text-c-theme transition-colors duration-100 ${
             isOnPage ? 'text-c-theme' : ''
           }`}
         >

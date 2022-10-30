@@ -5,12 +5,13 @@ import {
   MdOutlineDarkMode,
   MdOutlineLightMode,
   MdDarkMode,
+  MdMonitor,
 } from 'react-icons/md';
 import { HiChevronUpDown } from 'react-icons/hi2';
 
 function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -20,7 +21,7 @@ function ThemeSwitcher() {
 
   let Icon: IconType;
 
-  switch (resolvedTheme) {
+  switch (theme) {
     case 'light':
       Icon = MdOutlineLightMode;
       break;
@@ -31,6 +32,13 @@ function ThemeSwitcher() {
 
     case 'blackout':
       Icon = MdDarkMode;
+      break;
+
+    case 'system':
+      Icon = MdMonitor;
+      break;
+    default:
+      Icon = MdMonitor;
       break;
   }
 

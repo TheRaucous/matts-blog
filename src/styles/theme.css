@@ -11,11 +11,11 @@
 
     --c-brdr: 220 220 220;
 
-    --header-opacity: 0.8;
+    --header-opacity: 0.6;
   }
 
   [data-theme='dark'] {
-    --c-theme: 200 0 0;
+    --c-theme: 0 100 200;
 
     --c-bg-00: 30 30 30;
 
@@ -24,11 +24,11 @@
 
     --c-brdr: 60 60 60;
 
-    --header-opacity: 0.9;
+    --header-opacity: 0.8;
   }
 
   [data-theme='blackout'] {
-    --c-theme: 200 0 0;
+    --c-theme: 00 150 255;
 
     --c-bg-00: 0 0 0;
 

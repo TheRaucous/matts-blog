@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import 'theme.css';
+@import 'syntax-highlighting.css';
 
 @layer base {
   a {
@@ -11,6 +12,7 @@
 
   :root {
     --header-height: 54px;
+    --color-scheme-transition-time: 400ms;
   }
 
   body {
@@ -27,6 +29,6 @@
     transition-property: color, background-color, border-color,
       text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 200ms;
+    transition-duration: var(--color-scheme-transition-time);
   }
 }
