@@ -5,9 +5,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      <Link href="/blog/tut">
-        <a>go to test blogpost</a>
-      </Link>
+      <Link href="/blog/tut">go to test blogpost</Link>
     </>
   );
 }
