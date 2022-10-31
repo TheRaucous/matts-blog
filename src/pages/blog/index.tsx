@@ -2,7 +2,7 @@ import fs from 'fs';
 import Head from 'next/head';
 import Link from 'next/link';
 
-function index({ slugs }) {
+export default function index({ slugs }) {
   return (
     <>
       <Head>
@@ -27,5 +27,3 @@ export const getStaticProps = async () => {
     },
   };
 };
-
-export default index;

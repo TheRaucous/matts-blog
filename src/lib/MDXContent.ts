@@ -1,0 +1,117 @@
+import Ajv from 'ajv';
+import fs from 'fs';
+import matter from 'gray-matter';
+import path from 'path';
+import { blogSchema } from './ContentSchemas';
+
+const ajv = new Ajv();
+
+interface Source {
+  dir: string;
+  schema: Object;
+}
+
+interface Content {
+  slug: string;
+  frontmatter: { [key: string]: any };
+  content: string;
+  source: Source;
+}
+
+const sources: Source[] = [
+  {
+    dir: 'src/_content/blogPosts',
+    schema: blogSchema,
+  },
+  {
+    dir: 'src/_content/tutorials',
+    schema: blogSchema,
+  },
+];
+
+var content: Content[] = [];
+export const getContent = () => {
+  initContent();
+  content;
+};
+
+var validatedContent: Content[] = [];
+export const getValidatedContent = () => {
+  initContent();
+  return validatedContent;
+};
+
+export const initContent = () => {
+  // This script is loaded as a single, persistant instance on the server. In development,
+  // when the page that calls this function in its 'getStaticProps' method
+  // is loaded, this function will be ran, but the script will not be reloaded.
+  // The 'content' and 'validatedContent' variables need to be checked to avoid
+  // being recursively added onto during development.
+  if (content.length !== 0 || validatedContent.length !== 0) return;
+
+  // content = [];
+  // validatedContent = [];
+
+  content.forEach((element) => {
+    console.log(element.slug);
+  });
+  let files: { slug: string; source: Source }[] = [];
+
+  sources.forEach((source) => {
+    const slugs = fs.readdirSync(path.normalize(source.dir));
+
+    slugs.forEach((slug) => {
+      files.push({ slug: slug, source: source });
+    });
+  });
+
+  files.forEach((file) => {
+    content.push({
+      slug: file.slug,
+      frontmatter: null,
+      content: null,
+      source: file.source,
+    });
+  });
+
+  content.forEach((x) => {
+    const fileContent = fs
+      .readFileSync(path.join(x.source.dir, x.slug))
+      .toString();
+    const { content, data } = matter(fileContent);
+    x.frontmatter = data;
+    x.content = content;
+  });
+
+  validateContent();
+};
+
+const validateContent = () => {
+  content.forEach((x) => {
+    const validate = ajv.compile(x.source.schema);
+
+    const valid = validate(x.frontmatter);
+
+    if (!valid) {
+      console.error(
+        'Markdown frontmatter validation failed on file: ' +
+          x.source.dir +
+          '/' +
+          x.slug
+      );
+      console.log('Content: ', x);
+      console.log('AJV: ', validate.errors);
+    } else {
+      validatedContent.push(x);
+    }
+  });
+};
+
+export const getContentByDirectory = (dir: string) => {
+  initContent();
+  return content.filter((x) => {
+    return x.source.dir === dir;
+  });
+};
+
+export const getAllFrontmatter = () => {};
