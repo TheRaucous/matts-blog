@@ -90,6 +90,9 @@ function Blockquote(props) {
   );
 }
 
+/**
+ * Custom html components for use when parsing markdown.
+ */
 const MDXComponents = {
   h1: H1,
   h2: H2,

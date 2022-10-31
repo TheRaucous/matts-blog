@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import {
-  getValidatedContent, initContent
-} from '../lib/MDXContent';
+import { getValidatedContent } from '../lib/MDXContent';
 
 export default function Home({ posts }) {
   return (
@@ -22,8 +20,6 @@ export default function Home({ posts }) {
 }
 
 export const getStaticProps = async () => {
-  initContent();
-
   const content = getValidatedContent();
 
   const posts: { title: string; slug: string }[] = [];
@@ -31,7 +27,7 @@ export const getStaticProps = async () => {
   content.forEach((x) => {
     posts.push({
       title: x.frontmatter.title,
-      slug: x.slug.replace('.mdx', ''),
+      slug: x.slug,
     });
   });
 

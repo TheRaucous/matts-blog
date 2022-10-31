@@ -30,18 +30,31 @@ const sources: Source[] = [
 ];
 
 var content: Content[] = [];
+var validatedContent: Content[] = [];
+
 export const getContent = () => {
   initContent();
-  content;
+  return content;
 };
 
-var validatedContent: Content[] = [];
 export const getValidatedContent = () => {
   initContent();
   return validatedContent;
 };
 
-export const initContent = () => {
+export const getContentByDirectory = (dir: string) => {
+  initContent();
+  return content.filter((x) => {
+    return x.source.dir === dir;
+  });
+};
+
+export const findBySlug = (slug: string) => {
+  initContent();
+  return content.find((x) => x.slug === slug);
+};
+
+const initContent = () => {
   // This script is loaded as a single, persistant instance on the server. In development,
   // when the page that calls this function in its 'getStaticProps' method
   // is loaded, this function will be ran, but the script will not be reloaded.
@@ -49,19 +62,13 @@ export const initContent = () => {
   // being recursively added onto during development.
   if (content.length !== 0 || validatedContent.length !== 0) return;
 
-  // content = [];
-  // validatedContent = [];
-
-  content.forEach((element) => {
-    console.log(element.slug);
-  });
   let files: { slug: string; source: Source }[] = [];
 
   sources.forEach((source) => {
     const slugs = fs.readdirSync(path.normalize(source.dir));
 
     slugs.forEach((slug) => {
-      files.push({ slug: slug, source: source });
+      files.push({ slug: slug.replace('.mdx', ''), source: source });
     });
   });
 
@@ -76,7 +83,7 @@ export const initContent = () => {
 
   content.forEach((x) => {
     const fileContent = fs
-      .readFileSync(path.join(x.source.dir, x.slug))
+      .readFileSync(path.join(x.source.dir, x.slug + '.mdx'))
       .toString();
     const { content, data } = matter(fileContent);
     x.frontmatter = data;
@@ -106,12 +113,3 @@ const validateContent = () => {
     }
   });
 };
-
-export const getContentByDirectory = (dir: string) => {
-  initContent();
-  return content.filter((x) => {
-    return x.source.dir === dir;
-  });
-};
-
-export const getAllFrontmatter = () => {};
