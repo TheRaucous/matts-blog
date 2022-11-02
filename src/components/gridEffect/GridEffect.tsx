@@ -1,5 +1,5 @@
 import styles from './GridEffect.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 class Vector2 {
   x: number;
@@ -24,9 +24,11 @@ class Grid {
 }
 
 export default function GridEffect() {
-  var sizeX = 38;
-  var sizeY = 20;
-  var cellSize = 50; // px
+  var [windowX, setWindowX] = useState(1000);
+  var [windowY, setWindowY] = useState(500);
+  var sizeX = Math.round(windowX / (25 + (windowX * 0.02)));
+  var sizeY = 12;
+  var cellSize = windowX / sizeX; // px
   const grid: Grid = new Grid();
 
   for (let i = 0; i < sizeX; i++) {
@@ -36,6 +38,12 @@ export default function GridEffect() {
   }
 
   useEffect(() => {
+    addEventListener('resize', () => {
+      setWindowX(window.innerWidth);
+      setWindowY(window.innerHeight);
+    });
+    setWindowX(window.innerWidth);
+    setWindowY(window.innerHeight);
     grid.cells.forEach((cell) => {
       const element = document.getElementById(
         `cell-${cell.pos.x}-${cell.pos.y}`
@@ -105,7 +113,11 @@ export default function GridEffect() {
 
   return (
     <>
-      <div id="grid-container" className="relative overflow-hidden">
+      <div
+        suppressHydrationWarning={true}
+        id="grid-container"
+        className="relative overflow-hidden"
+      >
         <div
           id="grid-effect-background"
           className="relative bg-gradient-to-tr from-c-theme to-green-500"
