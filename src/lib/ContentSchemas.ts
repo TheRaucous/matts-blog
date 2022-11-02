@@ -4,6 +4,7 @@ export const blogSchema = {
     title: { type: 'string' },
     author: { type: 'string' },
     date: { type: 'string' },
+    description: {type: 'string'},
   },
   required: ['title', 'author', 'date'],
   additionalProperties: false,

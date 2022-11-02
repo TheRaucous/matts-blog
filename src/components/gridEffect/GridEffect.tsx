@@ -24,9 +24,9 @@ class Grid {
 }
 
 export default function GridEffect() {
-  const sizeX = 30;
-  const sizeY = 10;
-  const cellSize = 50;
+  var sizeX = 38;
+  var sizeY = 20;
+  var cellSize = 50; // px
   const grid: Grid = new Grid();
 
   for (let i = 0; i < sizeX; i++) {
@@ -36,9 +36,6 @@ export default function GridEffect() {
   }
 
   useEffect(() => {
-    addEventListener('resize', () => {
-      console.log(window.innerWidth)
-    })
     grid.cells.forEach((cell) => {
       const element = document.getElementById(
         `cell-${cell.pos.x}-${cell.pos.y}`
@@ -49,6 +46,10 @@ export default function GridEffect() {
       element.style.height = cellSize.toString() + 'px';
       cell.element = element;
     });
+
+    const gridBG = document.getElementById('grid-effect-background');
+    gridBG.style.height = (sizeY * cellSize).toString() + 'px';
+    gridBG.style.width = (sizeX * cellSize).toString() + 'px';
   });
 
   var canTriggerEffect = true;
@@ -70,15 +71,13 @@ export default function GridEffect() {
 
     var i = 1;
     const effect = () => {
-      console.log('effect');
       setTimeout(() => {
         const cells = getCellsByRange(cell, i);
-        cells.forEach((x) => {
-          animateCell(x.element);
-        });
-        i++;
-        console.log(cells.length);
         if (cells.length > 0) {
+          cells.forEach((x) => {
+            animateCell(x.element);
+          });
+          i++;
           effect();
         }
       }, cascadeTime);
@@ -98,29 +97,30 @@ export default function GridEffect() {
   };
 
   const animateCell = (element: HTMLElement) => {
-    element.classList.add('bg-blue-500');
+    element.classList.add('bg-transparent');
     setTimeout(() => {
-      element.classList.remove('bg-blue-500');
-    }, 200);
+      element.classList.remove('bg-transparent');
+    }, 250);
   };
 
   return (
     <>
-      <div className="relative ">
+      <div id="grid-container" className="relative overflow-hidden">
+        <div
+          id="grid-effect-background"
+          className="relative bg-gradient-to-tr from-c-theme to-green-500"
+        />
         {grid.cells.map((cell) => {
           return (
             <div
               key={`cell-${cell.pos.x}-${cell.pos.y}`}
               id={`cell-${cell.pos.x}-${cell.pos.y}`}
-              className="absolute -z-50 border border-c-brdr/50 transition-colors duration-200"
+              className="absolute bg-c-bg border border-c-brdr/50 transition-colors duration-300"
               onClick={() => onCellClicked(cell)}
             ></div>
           );
         })}
       </div>
-      {/* <div className='relative bg-gradient-to-br from-c-theme to-green-400 w-96 h-96'>
-        <div className='absolute'>potato</div>
-      </div> */}
     </>
   );
 }

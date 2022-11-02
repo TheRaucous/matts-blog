@@ -12,7 +12,7 @@
 
   :root {
     --header-height: 54px;
-    --color-scheme-transition-time: 400ms;
+    --color-scheme-transition-time: 300ms;
   }
 
   body {

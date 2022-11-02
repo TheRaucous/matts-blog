@@ -1,9 +1,11 @@
 @tailwind base;
 
 @layer base {
-  [data-theme='light'] {
-    --c-theme: 0 0 200;
+  :root {
+    --c-theme: 00 150 255;
+  }
 
+  [data-theme='light'] {
     --c-bg-00: 255 255 255;
 
     --c-text-00: 0 0 0;
@@ -15,8 +17,6 @@
   }
 
   [data-theme='dark'] {
-    --c-theme: 0 100 200;
-
     --c-bg-00: 30 30 30;
 
     --c-text-00: 255 255 255;
@@ -28,8 +28,6 @@
   }
 
   [data-theme='blackout'] {
-    --c-theme: 00 150 255;
-
     --c-bg-00: 0 0 0;
 
     --c-text-00: 255 255 255;

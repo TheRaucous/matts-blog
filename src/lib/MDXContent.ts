@@ -55,12 +55,24 @@ export const findBySlug = (slug: string) => {
 };
 
 const initContent = () => {
+  /************************************************************************* */
+
   // This script is loaded as a single, persistant instance on the server. In development,
   // when the page that calls this function in its 'getStaticProps' method
   // is loaded, this function will be ran, but the script will not be reloaded.
   // The 'content' and 'validatedContent' variables need to be checked to avoid
   // being recursively added onto during development.
-  if (content.length !== 0 || validatedContent.length !== 0) return;
+
+  // Use this if you are editing markdown files and want changes to show up
+  // in the application without restarting the server. Just refresh the page after 
+  // making any changes.
+  content = [];
+  validatedContent = [];
+
+  // Use this for better build time performance during development.
+  // if (content.length !== 0 || validatedContent.length !== 0) return;
+
+  /************************************************************************* */
 
   let files: { slug: string; source: Source }[] = [];
 

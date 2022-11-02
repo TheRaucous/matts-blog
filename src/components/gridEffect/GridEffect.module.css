@@ -1,0 +1,29 @@
+.cell {
+  display: inline-block;
+  height: calc(10px + 2vw);
+  width: calc(10px + 2vw);
+  margin: -0.5px -0.5px -0.5px -0.5px;
+}
+
+.cell:hover {
+  background-color: rgb(var(--c-theme));
+}
+
+.animated-cell {
+  animation: cell-rotation 0.5s linear;
+}
+
+@keyframes cell-rotation {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  50% {
+    transform: rotate(45deg);
+    scale: 0.7071;
+  }
+
+  100% {
+    transfrom: rotate(0deg);
+  }
+}
