@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { getValidatedContent } from '../lib/MDXContent';
 import PostsFeed from '../components/PostsFeed';
-import GridEffect from '../components/gridEffect/GridEffect'
+import GridEffect from '../components/gridEffect/GridEffect';
 
 export default function Home({ posts }) {
   return (
