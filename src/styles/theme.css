@@ -3,6 +3,7 @@
 @layer base {
   :root {
     --c-theme: 00 150 255;
+    /* --c-theme-2: 00 150 255; */
   }
 
   [data-theme='light'] {
@@ -33,7 +34,7 @@
     --c-text-00: 255 255 255;
     --c-text-01: 220 220 220;
 
-    --c-brdr: 40 40 40;
+    --c-brdr: 60 60 60;
 
     --header-opacity: 0.7;
   }

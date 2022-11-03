@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 function Header() {
   return (
-    <header className="flex justify-between sticky px-[10%] w-full h-[var(--header-height)] bg-c-bg/[var(--header-opacity)] backdrop-blur top-0 border-b border-brdrclr c-trans">
+    <header className="flex justify-between z-40 fixed px-[10%] w-full h-[var(--header-height)] bg-c-bg/[var(--header-opacity)] backdrop-blur top-0 border-b border-brdrclr c-trans">
       <Link href="/" className="flex items-center h-full">
         <span className="text-3xl select-none leading-none">MatMac</span>
       </Link>

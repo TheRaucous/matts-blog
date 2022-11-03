@@ -24,10 +24,10 @@ class Grid {
 }
 
 export default function GridEffect() {
-  var [windowX, setWindowX] = useState(1000);
-  var [windowY, setWindowY] = useState(500);
-  var sizeX = Math.round(windowX / (25 + (windowX * 0.02)));
-  var sizeY = 12;
+  var [windowX, setWindowX] = useState(0);
+  // var [windowY, setWindowY] = useState(500);
+  var sizeX = Math.round(windowX / (25 + windowX * 0.02));
+  var sizeY = 15;
   var cellSize = windowX / sizeX; // px
   const grid: Grid = new Grid();
 
@@ -37,13 +37,17 @@ export default function GridEffect() {
     }
   }
 
+  const handleResize = () => {
+    setWindowX(document.body.clientWidth);
+  };
+
+  var isInitialized = false;
+
   useEffect(() => {
-    addEventListener('resize', () => {
-      setWindowX(window.innerWidth);
-      setWindowY(window.innerHeight);
-    });
-    setWindowX(window.innerWidth);
-    setWindowY(window.innerHeight);
+    if (!isInitialized) {
+      setWindowX(document.body.clientWidth);
+    }
+
     grid.cells.forEach((cell) => {
       const element = document.getElementById(
         `cell-${cell.pos.x}-${cell.pos.y}`
@@ -55,9 +59,17 @@ export default function GridEffect() {
       cell.element = element;
     });
 
-    const gridBG = document.getElementById('grid-effect-background');
-    gridBG.style.height = (sizeY * cellSize).toString() + 'px';
-    gridBG.style.width = (sizeX * cellSize).toString() + 'px';
+    const gridContainer = document.getElementById('grid-container');
+    gridContainer.style.height = (sizeY * cellSize).toString() + 'px';
+    gridContainer.style.width = (sizeX * cellSize).toString() + 'px';
+
+    isInitialized = true;
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   });
 
   var canTriggerEffect = true;
@@ -112,27 +124,20 @@ export default function GridEffect() {
   };
 
   return (
-    <>
-      <div
-        suppressHydrationWarning={true}
-        id="grid-container"
-        className="relative overflow-hidden"
-      >
-        <div
-          id="grid-effect-background"
-          className="relative bg-gradient-to-tr from-c-theme to-green-500"
-        />
-        {grid.cells.map((cell) => {
-          return (
-            <div
-              key={`cell-${cell.pos.x}-${cell.pos.y}`}
-              id={`cell-${cell.pos.x}-${cell.pos.y}`}
-              className="absolute bg-c-bg border border-c-brdr/50 transition-colors duration-300"
-              onClick={() => onCellClicked(cell)}
-            ></div>
-          );
-        })}
-      </div>
-    </>
+    <div
+      id="grid-container"
+      className="bg-gradient-to-tr from-c-theme to-green-500"
+    >
+      {grid.cells.map((cell) => {
+        return (
+          <div
+            key={`cell-${cell.pos.x}-${cell.pos.y}`}
+            id={`cell-${cell.pos.x}-${cell.pos.y}`}
+            className="absolute bg-c-bg border-t border-x box-content border-c-brdr/40 transition-colors duration-[250ms]"
+            onClick={() => onCellClicked(cell)}
+          ></div>
+        );
+      })}
+    </div>
   );
 }

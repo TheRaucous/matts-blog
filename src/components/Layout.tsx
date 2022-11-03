@@ -7,7 +7,7 @@ function Layout({ children }) {
     <>
       <ThemeProvider themes={['light', 'dark', 'blackout']}>
         <Header />
-        {children}
+        <div className="pt-[var(--header-height)]">{children}</div>
         <Footer />
       </ThemeProvider>
     </>
