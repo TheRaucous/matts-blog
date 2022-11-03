@@ -23,11 +23,14 @@ class Grid {
   }
 }
 
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
 export default function GridEffect() {
   var [windowX, setWindowX] = useState(0);
   // var [windowY, setWindowY] = useState(500);
   var sizeX = Math.round(windowX / (25 + windowX * 0.02));
-  var sizeY = 15;
+  var sizeY = clamp(Math.round(12 / (windowX * 0.001)), 14, 22);
+  console.log(sizeY)
   var cellSize = windowX / sizeX; // px
   const grid: Grid = new Grid();
 
@@ -133,8 +136,9 @@ export default function GridEffect() {
           <div
             key={`cell-${cell.pos.x}-${cell.pos.y}`}
             id={`cell-${cell.pos.x}-${cell.pos.y}`}
-            className="absolute bg-c-bg border-t border-x box-content border-c-brdr/40 transition-colors duration-[250ms]"
+            className="absolute bg-c-bg border-t border-l box-content border-c-brdr transition-colors hover:transition-none hover:bg-transparent duration-[250ms]"
             onClick={() => onCellClicked(cell)}
+            contextMenu='false'
           ></div>
         );
       })}

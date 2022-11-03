@@ -2,7 +2,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 
 function Footer() {
   return (
-    <footer>
+    <footer className="border-t py-4">
       <ThemeSwitcher />
     </footer>
   );
