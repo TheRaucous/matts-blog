@@ -137,10 +137,14 @@ export default function GridEffect() {
             id={`cell-${cell.pos.x}-${cell.pos.y}`}
             className="absolute bg-c-bg border-t border-l box-content border-c-brdr transition-colors hover:transition-none hover:bg-transparent duration-[250ms]"
             onClick={() => onCellClicked(cell)}
-            contextMenu='false'
+            contextMenu="false"
           ></div>
         );
       })}
+      <div className="absolute top-0 w-full h-[18vw] bg-gradient-to-b from-c-bg pointer-events-none c-trans" />
+      <div className="absolute top-0 left-0 h-full w-[20vw] bg-gradient-to-r from-c-bg pointer-events-none c-trans" />
+      <div className="absolute top-0 -right-[1px] h-full w-[20vw] bg-gradient-to-l from-c-bg pointer-events-none c-trans" />
+      <div className="absolute -bottom-[1px] w-full h-[18vw] bg-gradient-to-t from-c-bg pointer-events-none c-trans" />
     </div>
   );
 }

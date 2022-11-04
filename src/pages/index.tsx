@@ -29,10 +29,7 @@ export default function Home({ posts }) {
               </div>
             </div>
           </div>
-          <div className="absolute top-0 w-full h-[18vw] bg-gradient-to-b from-c-bg to-transparent pointer-events-none c-trans" />
-          <div className="absolute top-0 left-0 h-full w-[20vw] bg-gradient-to-r from-c-bg to-transparent pointer-events-none c-trans" />
-          <div className="absolute top-0 -right-[1px] h-full w-[20vw] bg-gradient-to-l from-c-bg to-transparent pointer-events-none c-trans" />
-          <div className="absolute -bottom-[1px] w-full h-[18vw] bg-gradient-to-t from-c-bg to-transparent pointer-events-none c-trans" />
+          {/* Blur was here */}
         </div>
       </div>
       <main>
