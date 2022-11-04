@@ -30,7 +30,6 @@ export default function GridEffect() {
   // var [windowY, setWindowY] = useState(500);
   var sizeX = Math.round(windowX / (25 + windowX * 0.02));
   var sizeY = clamp(Math.round(12 / (windowX * 0.001)), 14, 22);
-  console.log(sizeY)
   var cellSize = windowX / sizeX; // px
   const grid: Grid = new Grid();
 
