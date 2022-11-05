@@ -8,8 +8,10 @@ export default function index({ posts }) {
       <Head>
         <title>Blog - MatMac</title>
       </Head>
-      <h1 className="text-center text-4xl py-10">MatMac Blog</h1>
-      <PostsFeed posts={posts} />
+      <main>
+        <h1 className="py-10 text-center text-4xl">MatMac Blog</h1>
+        <PostsFeed posts={posts} />
+      </main>
     </>
   );
 }

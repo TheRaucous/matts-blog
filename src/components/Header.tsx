@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 
 function Header() {
   return (
-    <header className="flex justify-between z-40 fixed px-[10%] w-full h-[var(--header-height)] bg-c-bg/[var(--header-opacity)] backdrop-blur top-0 border-b border-brdrclr c-trans">
-      <Link href="/" className="flex items-center h-full">
-        <span className="text-3xl select-none leading-none">MatMac</span>
+    <header className="border-brdrclr c-trans fixed top-0 z-40 flex h-[var(--header-height)] w-full justify-between border-b bg-c-bg/[var(--header-opacity)] px-[10%] backdrop-blur">
+      <Link href="/" className="flex h-full items-center">
+        <span className="select-none text-3xl leading-none">MatMac</span>
       </Link>
 
       <nav className="flex">
@@ -22,12 +22,12 @@ function HeaderLink(props: { children: any; href: string }) {
   return (
     <Link
       href={props.href}
-      className={`block h-full px-3 text-lg c-trans border-b box-content ${
-        isOnPage ? 'border-c-theme select-none' : ''
+      className={`c-trans box-content block h-full border-b px-3 text-lg ${
+        isOnPage ? 'select-none border-c-theme' : ''
       }`}
     >
       <span
-        className={`leading-[calc(var(--header-height)-1px)] font-semibold hover:text-c-theme transition-colors duration-100 ${
+        className={`font-semibold leading-[calc(var(--header-height)-1px)] transition-colors duration-100 hover:text-c-theme ${
           isOnPage ? 'text-c-theme' : ''
         }`}
       >

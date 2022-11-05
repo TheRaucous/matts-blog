@@ -20,7 +20,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className='bg-c-bg overflow-y-scroll overflow-x-hidden'>
+        <body className="overflow-x-hidden overflow-y-scroll bg-c-bg">
           <Main />
           <NextScript />
         </body>

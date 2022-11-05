@@ -47,10 +47,10 @@ function ThemeSwitcher() {
   }
 
   return (
-    <div className="relative flex px-0 w-min items-center bg-c-bg border rounded h-10 c-trans">
-      <Icon className="h-5 w-5 absolute left-2 pointer-events-none" />
+    <div className="c-trans relative flex h-10 w-min items-center rounded border bg-c-bg px-0">
+      <Icon className="pointer-events-none absolute left-2 h-5 w-5" />
       <select
-        className="px-8 bg-c-bg h-full rounded border-none appearance-none c-trans"
+        className="c-trans h-full appearance-none rounded border-none bg-c-bg px-8"
         value={theme}
         onChange={(e) => setTheme(e.target.value)}
       >
@@ -59,7 +59,7 @@ function ThemeSwitcher() {
         <option value="blackout">Blackout</option>
         <option value="system">System</option>
       </select>
-      <HiChevronUpDown className="absolute right-2 h-5 w-5 pointer-events-none" />
+      <HiChevronUpDown className="pointer-events-none absolute right-2 h-5 w-5" />
     </div>
   );
 }

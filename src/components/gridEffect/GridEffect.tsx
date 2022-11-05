@@ -144,26 +144,26 @@ export default function GridEffect() {
           <div
             key={`cell-${cell.pos.x}-${cell.pos.y}`}
             id={`cell-${cell.pos.x}-${cell.pos.y}`}
-            className="absolute bg-c-bg border-t border-l box-content border-c-brdr transition-colors hover:transition-none hover:bg-transparent duration-[250ms]"
+            className="absolute box-content border-t border-l border-c-brdr bg-c-bg transition-colors duration-[250ms] hover:bg-transparent hover:transition-none"
             onClick={() => onCellClicked(cell)}
           ></div>
         );
       })}
       <div
         id="grid-blur-t"
-        className="absolute top-0 w-full bg-gradient-to-b from-c-bg pointer-events-none c-trans"
+        className="c-trans pointer-events-none absolute top-0 w-full bg-gradient-to-b from-c-bg"
       />
       <div
         id="grid-blur-l"
-        className="absolute top-0 left-0 h-full bg-gradient-to-r from-c-bg pointer-events-none c-trans"
+        className="c-trans pointer-events-none absolute top-0 left-0 h-full bg-gradient-to-r from-c-bg"
       />
       <div
         id="grid-blur-r"
-        className="absolute top-0 -right-[1px] h-full bg-gradient-to-l from-c-bg pointer-events-none c-trans"
+        className="c-trans pointer-events-none absolute top-0 -right-[1px] h-full bg-gradient-to-l from-c-bg"
       />
       <div
         id="grid-blur-b"
-        className="absolute -bottom-[1px] w-full bg-gradient-to-t from-c-bg pointer-events-none c-trans"
+        className="c-trans pointer-events-none absolute -bottom-[1px] w-full bg-gradient-to-t from-c-bg"
       />
     </div>
   );

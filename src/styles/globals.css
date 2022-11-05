@@ -20,6 +20,10 @@
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 
+  main {
+    min-height: 78vh;
+  }
+
   * {
     color: rgb(var(--c-text-01));
     border-color: rgb(var(--c-brdr));
