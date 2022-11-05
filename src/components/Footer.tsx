@@ -7,20 +7,18 @@ function Footer() {
         <ul className="flex items-center justify-center space-x-3">
           <LIA href="">GitHub</LIA>
           <LIA href="">Twitter</LIA>
-          <LIA href="">More Socials</LIA>
         </ul>
         <ul className="flex items-center py-2 justify-center space-x-3 list-none">
-          <LIA href="">Tutorials</LIA>
           <LIA href="">Blog</LIA>
-          <LIA href="">Misc.</LIA>
+          <LIA href="">Contact</LIA>
         </ul>
       </div>
       <div className="flex justify-center items-center py-2 md:space-x-20 flex-col md:flex-row">
         <p className="text-center text-c-text-03">
           Made with <InlineA href="https://nextjs.org/">Next.js</InlineA>,{' '}
           <InlineA href="https://tailwindcss.com/">Tailwind</InlineA>,{' '}
-          <InlineA href="https://mdxjs.com/">MDX</InlineA> and{' '}
-          <InlineA href="https://www.typescriptlang.org/">Typescript</InlineA>
+          <InlineA href="https://www.typescriptlang.org/">Typescript</InlineA> and{' '}
+          <InlineA href="https://mdxjs.com/">MDX</InlineA>
         </p>
         <div className="py-2">
           <ThemeSwitcher />

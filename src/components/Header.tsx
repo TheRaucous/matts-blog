@@ -10,7 +10,7 @@ function Header() {
 
       <nav className="flex">
         <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/about">About</HeaderLink>
+        <HeaderLink href="/contact">Contact</HeaderLink>
       </nav>
     </header>
   );
