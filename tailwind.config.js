@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         'c-bg': {
           DEFAULT: 'rgb(var(--c-bg-00) / <alpha-value>)',
+          '00': 'rgb(var(--c-bg-00) / <alpha-value>)',
+          '01': 'rgb(var(--c-bg-01) / <alpha-value>)',
+          '02': 'rgb(var(--c-bg-02) / <alpha-value>)',
         },
         'c-theme': {
           DEFAULT: 'rgb(var(--c-theme) / <alpha-value>)',
