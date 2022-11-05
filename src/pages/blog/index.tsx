@@ -1,29 +1,31 @@
-import fs from 'fs';
 import Head from 'next/head';
-import Link from 'next/link';
+import { getContentByDirectory } from '../../lib/MDXContent';
+import PostsFeed from '../../components/PostsFeed';
 
-export default function index({ slugs }) {
+export default function index({ posts }) {
   return (
     <>
       <Head>
         <title>Blog - MatMac</title>
       </Head>
-      {slugs.map((slug) => {
-        return (
-          <div key={slug}>
-            <Link href={'/blog/' + slug}>{slug}</Link>
-          </div>
-        );
-      })}
+      <h1 className="text-center text-4xl py-10">MatMac Blog</h1>
+      <PostsFeed posts={posts} />
     </>
   );
 }
 
 export const getStaticProps = async () => {
-  const files = fs.readdirSync('src/_content/blogPosts');
+  const files = getContentByDirectory('src/_content/blogPosts');
+  const posts = files.map((file) => {
+    return {
+      slug: file.slug,
+      ...file.frontmatter,
+    };
+  });
+
   return {
     props: {
-      slugs: files.map((filename) => filename.replace('.mdx', '')),
+      posts: posts,
     },
   };
 };

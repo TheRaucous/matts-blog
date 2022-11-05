@@ -14,33 +14,21 @@ export default function Home({ posts }) {
         <div className="overflow-hidden border-red-600">
           <GridEffect />
           <div className="absolute inset-0 flex justify-center items-center pointer-events-none z-10">
-            <div className="bg-black/75 backdrop-blur-sm w-fit h-fit pointer-events-auto rounded shadow-md shadow-black/50">
-              <div className="md:flex">
-                <div className="flex items-center w-64 h-64 md:w-80 md:h-80 border">
-                  <h1 className="text-3xl text-center w-full">
-                    Stuff goes here
-                  </h1>
-                </div>
-                <div className="flex items-center w-64 h-64 md:w-80 md:h-80 border">
-                  <h1 className="text-3xl text-center w-full">
-                    Stuff goes here
-                  </h1>
-                </div>
+            <div className="bg-c-bg-01/75 backdrop-blur-sm w-fit h-fit pointer-events-auto shadow-md shadow-black/50 md:flex">
+              <div className="flex items-center w-64 h-64 md:w-80 md:h-80 border">
+                <h1 className="text-3xl text-center w-full">Stuff goes here</h1>
+              </div>
+              <div className="flex items-center w-64 h-64 md:w-80 md:h-80 border">
+                <h1 className="text-3xl text-center w-full">Stuff goes here</h1>
               </div>
             </div>
           </div>
-          {/* Blur was here */}
         </div>
       </div>
-      <main>
-        <div className="flex flex-col items-center">
-          <div className="mt-20 w-[45rem] max-w-full">
-            <div className="flex justify-between">
-              <TwitterFeed />
-              <PostsFeed posts={posts} />
-            </div>
-          </div>
-        </div>
+      <main className="mt-36">
+        <h1 className='text-center text-2xl'>Latest Posts</h1>
+        <PostsFeed posts={posts} />
+        {/* <TwitterFeed /> */}
       </main>
     </>
   );
@@ -48,13 +36,12 @@ export default function Home({ posts }) {
 
 export const getStaticProps = async () => {
   const content = getValidatedContent();
-  const posts: {}[] = [];
 
-  content.forEach((x) => {
-    posts.push({
-      slug: x.slug,
-      ...x.frontmatter,
-    });
+  const posts = content.map((file) => {
+    return {
+      slug: file.slug,
+      ...file.frontmatter,
+    };
   });
 
   return {
