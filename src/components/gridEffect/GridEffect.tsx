@@ -27,10 +27,9 @@ const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 export default function GridEffect() {
   var [windowX, setWindowX] = useState(0);
-  // var [windowY, setWindowY] = useState(500);
   var sizeX = Math.round(windowX / (25 + windowX * 0.02));
-  var sizeY = clamp(Math.round(12 / (windowX * 0.001)), 14, 22);
-  var cellSize = windowX / sizeX; // px
+  var sizeY = clamp(Math.round(12 / (windowX * 0.001)), 13, 22);
+  var cellSize = windowX / sizeX;
   const grid: Grid = new Grid();
 
   for (let i = 0; i < sizeX; i++) {
@@ -64,6 +63,16 @@ export default function GridEffect() {
     const gridContainer = document.getElementById('grid-container');
     gridContainer.style.height = (sizeY * cellSize).toString() + 'px';
     gridContainer.style.width = (sizeX * cellSize).toString() + 'px';
+
+    const bt = document.getElementById('grid-blur-t');
+    const br = document.getElementById('grid-blur-r');
+    const bl = document.getElementById('grid-blur-l');
+    const bb = document.getElementById('grid-blur-b');
+
+    bt.style.height = windowX / (4 + windowX * 0.002) + 'px';
+    br.style.width = windowX / (4 + windowX * 0.002) + 'px';
+    bl.style.width = windowX / (4 + windowX * 0.002) + 'px';
+    bb.style.height = windowX / (4 + windowX * 0.002) + 'px';
 
     isInitialized = true;
 
@@ -128,7 +137,7 @@ export default function GridEffect() {
   return (
     <div
       id="grid-container"
-      className="bg-gradient-to-tr from-c-theme to-green-500"
+      className="bg-gradient-to-tr from-c-theme to-green-400"
     >
       {grid.cells.map((cell) => {
         return (
@@ -137,14 +146,25 @@ export default function GridEffect() {
             id={`cell-${cell.pos.x}-${cell.pos.y}`}
             className="absolute bg-c-bg border-t border-l box-content border-c-brdr transition-colors hover:transition-none hover:bg-transparent duration-[250ms]"
             onClick={() => onCellClicked(cell)}
-            contextMenu="false"
           ></div>
         );
       })}
-      <div className="absolute top-0 w-full h-[18vw] bg-gradient-to-b from-c-bg pointer-events-none c-trans" />
-      <div className="absolute top-0 left-0 h-full w-[20vw] bg-gradient-to-r from-c-bg pointer-events-none c-trans" />
-      <div className="absolute top-0 -right-[1px] h-full w-[20vw] bg-gradient-to-l from-c-bg pointer-events-none c-trans" />
-      <div className="absolute -bottom-[1px] w-full h-[18vw] bg-gradient-to-t from-c-bg pointer-events-none c-trans" />
+      <div
+        id="grid-blur-t"
+        className="absolute top-0 w-full bg-gradient-to-b from-c-bg pointer-events-none c-trans"
+      />
+      <div
+        id="grid-blur-l"
+        className="absolute top-0 left-0 h-full bg-gradient-to-r from-c-bg pointer-events-none c-trans"
+      />
+      <div
+        id="grid-blur-r"
+        className="absolute top-0 -right-[1px] h-full bg-gradient-to-l from-c-bg pointer-events-none c-trans"
+      />
+      <div
+        id="grid-blur-b"
+        className="absolute -bottom-[1px] w-full bg-gradient-to-t from-c-bg pointer-events-none c-trans"
+      />
     </div>
   );
 }
