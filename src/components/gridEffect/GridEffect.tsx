@@ -1,5 +1,5 @@
 import styles from './GridEffect.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 
 class Vector2 {
   x: number;
@@ -32,6 +32,8 @@ export default function GridEffect() {
   var cellSize = windowX / sizeX;
   const grid: Grid = new Grid();
 
+  // height = clamp(Math.round(12 / (windowX * 0.001)), 13, 22) * (windowX / Math.round(windowX / (25 + windowX * 0.02)))
+
   for (let i = 0; i < sizeX; i++) {
     for (let j = 0; j < sizeY; j++) {
       grid.addCell({ pos: { x: i, y: j }, element: null });
@@ -44,7 +46,7 @@ export default function GridEffect() {
 
   var isInitialized = false;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isInitialized) {
       setWindowX(document.body.clientWidth);
     }
@@ -69,10 +71,12 @@ export default function GridEffect() {
     const bl = document.getElementById('grid-blur-l');
     const bb = document.getElementById('grid-blur-b');
 
-    bt.style.height = windowX / (4 + windowX * 0.002) + 'px';
-    br.style.width = windowX / (4 + windowX * 0.002) + 'px';
-    bl.style.width = windowX / (4 + windowX * 0.002) + 'px';
-    bb.style.height = windowX / (4 + windowX * 0.002) + 'px';
+    const blurSize: string = windowX / (4 + windowX * 0.002) + 'px';
+
+    bt.style.height = blurSize;
+    br.style.width = blurSize;
+    bl.style.width = blurSize;
+    bb.style.height = blurSize;
 
     isInitialized = true;
 
@@ -135,10 +139,8 @@ export default function GridEffect() {
   };
 
   return (
-    <div
-      id="grid-container"
-      className="bg-gradient-to-tr from-c-theme to-green-400"
-    >
+    <div id="grid-container">
+      <div className="h-full w-full bg-gradient-to-tr from-c-theme to-green-400" />
       {grid.cells.map((cell) => {
         return (
           <div

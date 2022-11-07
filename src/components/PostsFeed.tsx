@@ -35,7 +35,9 @@ export default function PostsFeed({ posts }) {
                 <span className="text-sm sm:inline-block">
                   {formattedDate(post.date)}
                 </span>
-                <p className="mt-2">{checkDescription(post.description)}</p>
+                <p className="mt-2 max-h-24 overflow-hidden">
+                  {checkDescription(post.description)}
+                </p>
               </div>
             </Link>
           );
