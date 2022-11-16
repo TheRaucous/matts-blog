@@ -1,19 +1,17 @@
-import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 import { IconType } from 'react-icons';
+import { HiChevronUpDown } from 'react-icons/hi2';
 import {
+  MdMonitor,
   MdOutlineDarkMode,
   MdOutlineLightMode,
-  MdDarkMode,
-  MdMonitor,
 } from 'react-icons/md';
-import { HiChevronUpDown } from 'react-icons/hi2';
 
 function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setMounted(true);
     document.body.classList.add('c-trans');
@@ -28,10 +26,6 @@ function ThemeSwitcher() {
 
     case 'dark':
       Icon = MdOutlineDarkMode;
-      break;
-
-    case 'blackout':
-      Icon = MdDarkMode;
       break;
 
     case 'system':
@@ -56,7 +50,6 @@ function ThemeSwitcher() {
       >
         <option value="light">Light</option>
         <option value="dark">Dark</option>
-        <option value="blackout">Blackout</option>
         <option value="system">System</option>
       </select>
       <HiChevronUpDown className="pointer-events-none absolute right-2 h-5 w-5" />
