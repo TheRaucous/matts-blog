@@ -11,7 +11,7 @@ export default function Home({ posts }) {
       <Head>
         <title>Home - MatMac</title>
       </Head>
-      <div className="relative">
+      {/* <div className="relative">
         <GridEffect />
         <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
           <div className="pointer-events-auto h-fit w-fit bg-c-bg-01/75 shadow-md shadow-black/50 backdrop-blur-sm md:flex">
@@ -23,8 +23,8 @@ export default function Home({ posts }) {
             </div>
           </div>
         </div>
-      </div>
-      {/* <Hero /> */}
+      </div> */}
+      <Hero />
       <main className="mt-36">
         <h1 className="text-center text-2xl">Latest Posts</h1>
         <PostsFeed posts={posts} />

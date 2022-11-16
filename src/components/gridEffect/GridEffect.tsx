@@ -46,7 +46,7 @@ export default function GridEffect() {
 
   var isInitialized = false;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isInitialized) {
       setWindowX(document.body.clientWidth);
     }
