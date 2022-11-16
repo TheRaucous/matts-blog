@@ -5,10 +5,13 @@
 }
 
 .grid {
-  --sizeX: calc(100vw / (25 + 2vw));
+  /* --sizeX: calc(100vw / (25 + 2vw));
   --round: var(--sizeX);
   --sizeY: calc(12 / 0.1vw);
   --round: var(--sizeY);
 
-  height: calc(clamp(var(--sizeY), 13, 22) * (100vw / var(--sizeX)))
+  height: calc(clamp(var(--sizeY), 13, 22) * (100vw / var(--sizeX))) */
+  --h: 9.5px;
+  --round: var(--h);
+  height: var(--round);
 }

@@ -1,5 +1,5 @@
 import styles from './GridEffect.module.css';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 class Vector2 {
   x: number;
@@ -46,7 +46,7 @@ export default function GridEffect() {
 
   var isInitialized = false;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!isInitialized) {
       setWindowX(document.body.clientWidth);
     }
@@ -62,9 +62,9 @@ export default function GridEffect() {
       cell.element = element;
     });
 
-    const gridContainer = document.getElementById('grid-container');
-    gridContainer.style.height = (sizeY * cellSize).toString() + 'px';
-    gridContainer.style.width = (sizeX * cellSize).toString() + 'px';
+    // const gridContainer = document.getElementById('grid-container');
+    // gridContainer.style.height = (sizeY * cellSize).toString() + 'px';
+    // gridContainer.style.width = (sizeX * cellSize).toString() + 'px';
 
     const bt = document.getElementById('grid-blur-t');
     const br = document.getElementById('grid-blur-r');
@@ -77,6 +77,9 @@ export default function GridEffect() {
     br.style.width = blurSize;
     bl.style.width = blurSize;
     bb.style.height = blurSize;
+
+    const bg = document.getElementById('grid-bg');
+    bg.classList.remove('hidden');
 
     isInitialized = true;
 
@@ -138,9 +141,26 @@ export default function GridEffect() {
     }, 250);
   };
 
+  // const getHeight = (): CSSProperties => {
+  //   if (typeof window !== 'undefined') {
+  //     const x = document.body.clientWidth;
+  //     return {
+  //       height:
+  //         clamp(Math.round(12 / (x * 0.001)), 13, 22) *
+  //           (x / Math.round(x / (25 + x * 0.02))) +
+  //         'px',
+  //     };
+  //   } else {
+  //     return { height: '0px' };
+  //   }
+  // };
+
   return (
-    <div id="grid-container">
-      <div className="h-full w-full bg-gradient-to-tr from-c-theme to-green-400" />
+    <div id="grid-container" className={styles.grid}>
+      <div
+        id="grid-bg"
+        className="hidden h-full w-full bg-gradient-to-tr from-c-theme to-green-400"
+      />
       {grid.cells.map((cell) => {
         return (
           <div

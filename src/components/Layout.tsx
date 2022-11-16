@@ -6,8 +6,9 @@ function Layout({ children }) {
   return (
     <>
       <ThemeProvider themes={['light', 'dark', 'blackout']}>
-        <Header />
-        <div className="pt-[var(--header-height)]">{children}</div>
+        {/* <Header />
+        <div className="pt-[var(--header-height)]">{children}</div> */}
+        {children}
         <Footer />
       </ThemeProvider>
     </>

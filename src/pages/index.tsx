@@ -1,18 +1,19 @@
 import Head from 'next/head';
 import { getValidatedContent } from '../lib/MDXContent';
 import PostsFeed from '../components/PostsFeed';
-import TwitterFeed from '../components/TwitterFeed';
-import GridEffect from '../components/gridEffect/GridEffect';
+// import TwitterFeed from '../components/TwitterFeed';
+// import GridEffect from '../components/gridEffect/GridEffect';
 import Hero from '../components/Hero';
 
 export default function Home({ posts }) {
+  const HeroElem = () => <Hero />;
   return (
     <>
       <Head>
         <title>Home - MatMac</title>
       </Head>
-      <div className="relative">
-        <GridEffect />
+      {/* <div className="relative">
+        <HeroElem />
         <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
           <div className="pointer-events-auto h-fit w-fit bg-c-bg-01/75 shadow-md shadow-black/50 backdrop-blur-sm md:flex">
             <div className="flex h-64 w-64 items-center border md:h-80 md:w-80">
@@ -23,8 +24,7 @@ export default function Home({ posts }) {
             </div>
           </div>
         </div>
-      </div>
-      {/* <Hero /> */}
+      </div> */}
       <main className="mt-36">
         <h1 className="text-center text-2xl">Latest Posts</h1>
         <PostsFeed posts={posts} />
