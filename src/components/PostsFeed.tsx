@@ -36,7 +36,7 @@ export default function PostsFeed({ posts }) {
                   {formattedDate(post.date)}
                 </span>
                 <p className="mt-2 max-h-24 overflow-hidden">
-                  {checkDescription(post.description)}
+                  {post.description}
                 </p>
               </div>
             </Link>
