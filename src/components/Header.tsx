@@ -2,23 +2,37 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 function Header() {
+  const router = useRouter();
   return (
-    <header className="border-brdrclr c-trans fixed top-0 z-40 flex h-[var(--header-height)] w-full justify-between border-b bg-c-bg/[var(--header-opacity)] px-[10%] backdrop-blur">
+    <header className="border-brdrclr c-trans top-0 z-40 flex h-[var(--header-height)] w-full justify-between border-b bg-c-bg/[var(--header-opacity)] px-[10%] backdrop-blur">
       <Link href="/" className="flex h-full items-center">
         <span className="select-none text-3xl leading-none">MatMac</span>
       </Link>
 
       <nav className="flex">
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/contact">Contact</HeaderLink>
+        <HeaderLink
+          routeCheck={(href: string) => router.asPath === href}
+          href="/"
+        >
+          Blog
+        </HeaderLink>
+        <HeaderLink
+          routeCheck={(href: string) => router.asPath.startsWith(href)}
+          href="/contact"
+        >
+          Contact
+        </HeaderLink>
       </nav>
     </header>
   );
 }
 
-function HeaderLink(props: { children: any; href: string }) {
-  const router = useRouter();
-  const isOnPage = router.asPath.startsWith(props.href);
+function HeaderLink(props: {
+  children: any;
+  href: string;
+  routeCheck: Function;
+}) {
+  const isOnPage = props.routeCheck(props.href);
   return (
     <Link
       href={props.href}
