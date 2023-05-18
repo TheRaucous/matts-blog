@@ -6,8 +6,7 @@ function Layout({ children }) {
   return (
     <>
       <ThemeProvider>
-        {/* <Header />
-        <div className="pt-[var(--header-height)]">{children}</div> */}
+        <Header />
         {children}
         <Footer />
       </ThemeProvider>
