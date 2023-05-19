@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
-export default function contact() {
+export default function Contact() {
   const form = useRef();
 
   const sendEmail = (e) => {
