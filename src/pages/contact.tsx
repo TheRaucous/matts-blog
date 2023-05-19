@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function contact() {
