@@ -9,6 +9,7 @@ import MDXComponents from '../../components/MDXComponents';
 import ThemeSwitcher from '../../components/ThemeSwitcher';
 
 import { findBySlug, getContentByDirectory } from '../../lib/MDXContent';
+import Hero from '../../components/home/Hero';
 
 const components = {
   Button,
@@ -20,13 +21,14 @@ export default function BlogPost({ frontmatter, content }) {
   return (
     <>
       <Head>
-        <title>{frontmatter.title + ' - MatMac'}</title>
+        <title>{frontmatter.title + ' - McLeroy'}</title>
       </Head>
       <div className="flex flex-col items-center justify-center">
-        <main className=" w-full max-w-[45rem]">
-          <h1 className="c-trans py-10 text-5xl font-bold">
+        <main className="w-full max-w-[45rem]">
+{/*           <h1 className="c-trans py-10 text-5xl font-bold">
             {frontmatter.title}
-          </h1>
+          </h1> */}
+          <Hero Title={frontmatter.title}/>
           <MDXRemote {...content} components={components} />
         </main>
       </div>

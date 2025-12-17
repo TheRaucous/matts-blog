@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Hero from '../components/home/Hero'
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
@@ -25,22 +26,64 @@ export default function Contact() {
       );
   };
 
-  return (
+    return (
     <>
       <Head>
-        <title>Contact - MatMac</title>
+        <title>Contact - McLeroy</title>
       </Head>
-      <main className='flex justify-center'>
-        <form className="flex flex-col w-96" ref={form} onSubmit={sendEmail}>
-          <label>Name</label>
-          <input type="text" name="user_name" required />
-          <label>Email</label>
-          <input type="email" name="user_email" required />
-          <label>Message</label>
-          <textarea name="message" />
-          <SubmitInput />
+      <Hero Title="Contact me"/>
+      <main className="flex justify-center">
+        <form ref={form} onSubmit={sendEmail} className="p-4 border-2">
+          <div className="mb-8">
+            <label className="block">Name</label>
+            <input type="text" name="user_name" required className=" w-full textinput" />
+          </div>
+          <div className="mb-8">
+            <label className="w-full block">Email</label>
+            <input type="email" name="user_email" required className="block w-full textinput"/>
+          </div>
+          <div className="mb-8">
+            <label className="block">Message</label>
+            <textarea className="w-[25rem] max-w-[90vw] textinput min-h-[20rem]" name="message" />
+          </div>
+          <div className="flex w-full justify-center">
+            <SubmitInput />
+          </div>
         </form>
       </main>
+    </>
+  );
+
+/*   return (
+    <>
+      <Head>
+        <title>Contact - McLeroy</title>
+      </Head>
+      <Hero Title="Contact me"/>
+      <main className="flex justify-center">
+        <form ref={form} onSubmit={sendEmail} className="rounded-md p-8 max-w-[45rem] border-4">
+          <label className="text-center inline-block flex-1">Name</label>
+          <input type="text" name="user_name" required className="bg-slate-200 rounded-lg" />
+          <label className="w-20">Email</label>
+          <input type="email" name="user_email" required className="bg-slate-200 rounded-lg"/>
+          <div>
+            <label className="w-20">Message</label>
+            <textarea className="w-full min-h-[200px] p-1 box-border bg-slate-200 rounded-lg" name="message" />
+          </div>
+          <div className="justify-center">
+            <SubmitInput />
+          </div>
+        </form>
+      </main>
+    </>
+  ); */
+}
+
+function FormItem({ label, type }) {
+  return (
+    <>
+      <label className="pr-8">{label}</label>
+      <input className="inline-block w-96" type={type} />
     </>
   );
 }
@@ -51,7 +94,7 @@ function SubmitInput() {
       <input
         type="submit"
         value="Send"
-        className="rounded border-2 px-2 py-1 text-lg tracking-wide transition-colors duration-75 hover:cursor-pointer hover:border-c-theme hover:bg-c-bg-01"
+        className="rounded w-40 border-2 px-2 py-1 text-lg tracking-wide transition-colors duration-75 hover:cursor-pointer hover:border-c-theme hover:bg-c-bg-01"
       />
     </>
   );

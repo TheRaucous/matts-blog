@@ -35,4 +35,16 @@
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: var(--color-scheme-transition-time);
   }
+
+  .textinput {
+    padding-left: 4px;
+    padding-bottom: 3px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: large;
+    border-width: 2px;
+    border-radius: 0.5rem;
+    border-color: rgb(var(--c-brdr));
+    background-color: rgb(var(--c-bg-01));
+  }
 }

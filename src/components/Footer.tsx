@@ -2,7 +2,7 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 function Footer() {
   return (
-    <footer className="c-trans border-t py-4">
+    <footer className="c-trans border-t py-4 my-10">
       <div className="flex flex-col items-center justify-center py-2 md:flex-row md:space-x-20">
         {/* <ul className="flex items-center justify-center space-x-3">
           <LIA href="">GitHub</LIA>
