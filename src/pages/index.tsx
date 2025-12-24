@@ -4,6 +4,7 @@ import PostsFeed from '../components/PostsFeed';
 import TwitterFeed from '../components/TwitterFeed';
 import GridEffect from '../components/gridEffect/GridEffect';
 import Hero from '../components/Hero';
+import Curtain from '../components/gridEffect/Curtain';
 
 export default function Home({ posts }) {
   return (
@@ -24,6 +25,7 @@ export default function Home({ posts }) {
           </div>
         </div>
       </div> */}
+      <Curtain />
       <Hero />
       <main className="mt-36">
         <h1 className="text-center text-2xl">Latest Posts</h1>
