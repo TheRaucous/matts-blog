@@ -5,7 +5,7 @@ function Header() {
   return (
     <header className="border-brdrclr c-trans fixed top-0 z-40 flex h-[var(--header-height)] w-full justify-between border-b bg-c-bg/[var(--header-opacity)] px-[10%] backdrop-blur">
       <Link href="/" className="flex h-full items-center">
-        <span className="select-none text-3xl leading-none">MatMac</span>
+        <span className="select-none text-3xl leading-none">MattMcleroy.net</span>
       </Link>
 
       <nav className="flex">

@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import { getValidatedContent } from '../lib/MDXContent';
 import PostsFeed from '../components/PostsFeed';
-import TwitterFeed from '../components/TwitterFeed';
-import GridEffect from '../components/gridEffect/GridEffect';
 import Hero from '../components/Hero';
 import Curtain from '../components/gridEffect/Curtain';
 
