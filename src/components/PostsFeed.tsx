@@ -2,7 +2,7 @@ import { format, isThisYear } from 'date-fns';
 import Link from 'next/link';
 
 export default function PostsFeed({ posts }) {
-  const maxDescLength = 150;
+  const maxDescLength = 350;
 
   posts.sort((a, b) => {
     return (
@@ -24,6 +24,14 @@ export default function PostsFeed({ posts }) {
     return isThisYear(date) ? format(date, 'MMM d') : format(date, 'MMM d, y');
   };
 
+  const formatTags = (tags: string) => {
+    if (tags == null) return [""];
+
+    const formattedTags = tags.split(", ");
+
+    return formattedTags;
+  };
+
   return (
     <aside className="flex justify-center">
       <div className="w-[45rem]">
@@ -35,6 +43,13 @@ export default function PostsFeed({ posts }) {
                 <span className="text-sm sm:inline-block">
                   {formattedDate(post.date)}
                 </span>
+                <div className="">
+                  {formatTags(post.tags).map((tag) => {
+                    return (
+                      <TagUI text={tag} />
+                    );
+                  })}
+                </div>
                 <p className="mt-2 max-h-24 overflow-hidden">
                   {checkDescription(post.description)}
                 </p>
@@ -44,5 +59,15 @@ export default function PostsFeed({ posts }) {
         })}
       </div>
     </aside>
+  );
+}
+
+function TagUI({ text }) {
+  if (text == "") return <></>
+
+  return (
+    <div className="bg-c-bg-02 p-1 rounded-md mr-2 mt-2 border-2 inline-block">
+      {text}
+    </div>
   );
 }

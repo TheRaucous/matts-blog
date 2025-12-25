@@ -140,7 +140,7 @@ export default function GridEffect() {
 
   return (
     <div id="grid-container">
-      <div className="h-full w-full bg-gradient-to-tr from-c-theme to-green-400" />
+      <div className="h-full w-full bg-gradient-to-br from-c-theme to-green-400" />
       {grid.cells.map((cell) => {
         return (
           <div

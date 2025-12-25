@@ -7,6 +7,8 @@ function Footer() {
         <ul className="flex items-center justify-center space-x-3">
           <LIA href="">GitHub</LIA>
           <LIA href="">Twitter</LIA>
+          <LIA href="">YouTube</LIA>
+          <LIA href="">Twitch</LIA>
         </ul>
         <ul className="flex list-none items-center justify-center space-x-3 py-2">
           <LIA href="">Blog</LIA>

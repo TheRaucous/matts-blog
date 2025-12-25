@@ -114,9 +114,9 @@ const validateContent = () => {
     if (!valid) {
       console.error(
         'Markdown frontmatter validation failed on file: ' +
-          x.source.dir +
-          '/' +
-          x.slug
+        x.source.dir +
+        '/' +
+        x.slug
       );
       console.log('Content: ', x);
       console.log('AJV: ', validate.errors);

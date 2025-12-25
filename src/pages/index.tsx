@@ -3,12 +3,13 @@ import { getValidatedContent } from '../lib/MDXContent';
 import PostsFeed from '../components/PostsFeed';
 import Hero from '../components/Hero';
 import Curtain from '../components/gridEffect/Curtain';
+import Topics from '../components/Topics';
 
 export default function Home({ posts }) {
   return (
     <>
       <Head>
-        <title>Home - MatMac</title>
+        <title>Home - McLeroy</title>
       </Head>
       {/* <div className="relative">
         <GridEffect />
@@ -26,6 +27,8 @@ export default function Home({ posts }) {
       <Curtain />
       <Hero />
       <main className="mt-36">
+        <h1 className="text-center text-2xl">Topics</h1>
+        <Topics />
         <h1 className="text-center text-2xl">Latest Posts</h1>
         <PostsFeed posts={posts} />
       </main>
