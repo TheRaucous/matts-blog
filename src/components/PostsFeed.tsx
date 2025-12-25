@@ -44,9 +44,9 @@ export default function PostsFeed({ posts }) {
                   {formattedDate(post.date)}
                 </span>
                 <div className="">
-                  {formatTags(post.tags).map((tag) => {
+                  {formatTags(post.tags).map((tag, index) => {
                     return (
-                      <TagUI text={tag} />
+                      <TagUI key={index} text={tag} />
                     );
                   })}
                 </div>
